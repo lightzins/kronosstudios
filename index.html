@@ -1921,6 +1921,10 @@
         function openProductModal(productId) {
             const p = products.find(pr => pr.id === productId);
             if (!p) return;
+            if (!p.sizes || !Array.isArray(p.sizes)) {
+                console.error('Erro: sizes não é um array válido para o produto:', p);
+                p.sizes = ['P', 'M', 'G', 'GG']; // fallback
+            }
             modalProductId = productId;
             modalSelectedSize = '';
 
