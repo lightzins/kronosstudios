@@ -2,7 +2,12 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Kronos">
+    <meta name="description" content="E-commerce de vestuário essencial premium - Kronos Drop 01 2026">
+    <meta name="theme-color" content="#121212">
     <title>Kronos - O tempo muda, o estilo permanece</title>
     
     <!-- Favicon -->
@@ -103,6 +108,178 @@
             .cart-drawer {
                 width: 100%;
                 right: -100%;
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px; /* Evitar zoom automático */
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .product-card {
+                margin-bottom: 16px;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+
+            /* Hero adjustments */
+            #hero {
+                height: 60vh;
+                min-height: 400px;
+            }
+
+            .hero-fade {
+                animation-delay: 0.2s !important;
+            }
+
+            /* Modal mobile */
+            .checkout-box, .product-modal-inner {
+                border-radius: 16px;
+                max-height: 85vh;
+            }
+
+            /* Navbar mobile */
+            .hidden.sm\:flex {
+                display: none !important;
+            }
+
+            /* Footer mobile */
+            .grid.grid-cols-1 {
+                gap: 20px;
+            }
+
+            /* Padding mobile */
+            section {
+                padding: 16px !important;
+            }
+
+            /* Typography mobile */
+            h1, .font-playfair {
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            }
+
+            h2 {
+                font-size: clamp(1.2rem, 4vw, 2rem);
+            }
+
+            /* Buttons full width */
+            .btn-primary, .btn-secondary, .checkout-btn {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            /* Modal no mobile */
+            .modal-info {
+                padding: 24px 16px;
+            }
+
+            /* Checkout form */
+            .checkout-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .checkout-field.half {
+                grid-column: 1 / -1;
+            }
+
+            /* Carrinho drawer */
+            #cartItems {
+                max-height: 50vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            
+            body {
+                font-size: 14px;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            #hero {
+                height: 50vh;
+                min-height: 300px;
+            }
+
+            .hero-slide {
+                background-position: center 30%;
+            }
+
+            /* Remove elementos grandes em mobile */
+            .hidden.md\:flex {
+                display: none !important;
+            }
+
+            /* Grid ajustado */
+            .drop-carousel {
+                gap: 12px;
+            }
+
+            .drop-card {
+                min-width: 160px;
+            }
+
+            /* Modals menores */
+            .checkout-box, .product-modal-inner {
+                max-width: 95vw;
+                border-radius: 12px;
+            }
+
+            /* Padding reduzido */
+            section {
+                padding: 12px !important;
+            }
+
+            .modal-info {
+                padding: 16px 12px;
+            }
+
+            /* Typography extra small */
+            h1 {
+                font-size: clamp(1.2rem, 5vw, 2rem);
+            }
+
+            h2 {
+                font-size: clamp(1rem, 3vw, 1.5rem);
+            }
+
+            p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            /* Spacing */
+            .mt-4 { margin-top: 12px; }
+            .mt-6 { margin-top: 16px; }
+
+            /* Remove scroll horizontal */
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Touch friendly buttons */
+            button {
+                min-height: 44px; /* Apple touch target */
+            }
+
+            /* Input fields touch friendly */
+            input, select, textarea {
+                font-size: 16px;
+                min-height: 44px;
+                padding: 12px;
             }
         }
 
@@ -1011,8 +1188,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-playfair font-bold tracking-wider">KRONOS</h1>
+                <div class="flex items-center min-w-0">
+                    <h1 class="text-xl sm:text-2xl font-playfair font-bold tracking-wider truncate">KRONOS</h1>
                 </div>
 
                 <!-- Menu Desktop -->
@@ -1022,16 +1199,16 @@
                 </div>
 
                 <!-- Ícones Direita -->
-                <div class="flex items-center space-x-6">
-                    <!-- Busca -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Busca (escondida no mobile) -->
                     <div class="hidden sm:flex items-center bg-gray-100 rounded-lg px-3 py-2">
                         <input type="text" placeholder="Buscar..." class="bg-transparent text-sm outline-none w-32">
                         <i class="fas fa-search text-gray-600 ml-2"></i>
                     </div>
 
                     <!-- Perfil -->
-                    <button id="navUserBtn" class="hidden sm:block hover:text-gray-600 transition" onclick="openInfoModal('conta')">
-                        <i class="fas fa-user text-lg"></i>
+                    <button id="navUserBtn" class="hidden sm:block hover:text-gray-600 transition text-lg" onclick="openInfoModal('conta')">
+                        <i class="fas fa-user"></i>
                     </button>
 
                     <!-- Carrinho -->
@@ -1159,19 +1336,19 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="bg-black text-white py-12 px-4">
+    <footer class="bg-black text-white py-8 sm:py-12 px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
                 <!-- Sobre -->
-                <div>
-                    <h3 class="font-bold text-lg mb-4">KRONOS</h3>
-                    <p class="text-gray-400 text-sm">Vestuário essencial de alta qualidade para quem valoriza o estilo atemporal.</p>
+                <div class="text-center sm:text-left">
+                    <h3 class="font-bold text-base sm:text-lg mb-3 sm:mb-4">KRONOS</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm">Vestuário essencial de alta qualidade para quem valoriza o estilo atemporal.</p>
                 </div>
 
                 <!-- Links -->
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Links</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
+                <div class="text-center sm:text-left">
+                    <h4 class="font-bold text-base sm:text-lg mb-3 sm:mb-4">Links</h4>
+                    <ul class="space-y-1 sm:space-y-2 text-gray-400 text-xs sm:text-sm">
                         <li><a href="#" class="hover:text-white transition" onclick="openInfoModal('sobre');return false;">Sobre</a></li>
                         <li><a href="#" class="hover:text-white transition" onclick="openInfoModal('envios');return false;">Envios</a></li>
                         <li><a href="#" class="hover:text-white transition" onclick="openInfoModal('devolucoes');return false;">Devoluções</a></li>
@@ -1180,21 +1357,21 @@
                 </div>
 
                 <!-- Newsletter -->
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Newsletter</h4>
-                    <div class="flex gap-2">
-                        <input type="email" placeholder="Seu email" class="flex-1 px-3 py-2 bg-gray-800 text-white placeholder-gray-600 text-sm rounded">
-                        <button class="btn-primary">Inscrever</button>
+                <div class="text-center sm:text-left">
+                    <h4 class="font-bold text-base sm:text-lg mb-3 sm:mb-4">Newsletter</h4>
+                    <div class="flex gap-2 flex-col sm:flex-row">
+                        <input type="email" placeholder="Seu email" class="flex-1 px-3 py-2 bg-gray-800 text-white placeholder-gray-600 text-xs sm:text-sm rounded min-h-10">
+                        <button class="btn-primary text-xs sm:text-sm">Inscrever</button>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">&copy; 2026 Kronos. Todos os direitos reservados.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0 text-gray-400">
-                    <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
+            <div class="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-xs sm:text-sm text-center sm:text-left">&copy; 2026 Kronos. Todos os direitos reservados.</p>
+                <div class="flex space-x-6 text-gray-400">
+                    <a href="#" class="hover:text-white transition text-sm sm:text-base"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition text-sm sm:text-base"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition text-sm sm:text-base"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
         </div>
