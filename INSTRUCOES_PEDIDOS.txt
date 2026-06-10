@@ -1,0 +1,125 @@
+═══════════════════════════════════════════════════════════════════
+                  SISTEMA DE PEDIDOS REAL - KRONOS
+═══════════════════════════════════════════════════════════════════
+
+🎯 OBJETIVO:
+Sistema real de pedidos onde cada compra é salva no Supabase e 
+o usuário vê seus pedidos em "Meus Pedidos"
+
+───────────────────────────────────────────────────────────────────
+
+⚡ INÍCIO RÁPIDO (3 PASSOS):
+
+1️⃣  CRIAR A TABELA NO SUPABASE
+   • Abra: https://app.supabase.com
+   • Vá para: SQL Editor
+   • Cole o SQL do arquivo: SETUP_SUPABASE.md
+   • Execute!
+
+2️⃣  TESTE NO SEU SITE
+   • Faça login
+   • Adicione produto ao carrinho
+   • Finalize a compra
+   • Clique no avatar em "Meus Pedidos"
+   • Veja seu pedido aparecer! ✅
+
+3️⃣  PRONTO!
+   • Cada pedido novo aparecerá automaticamente
+   • Dados salvos em banco de dados real
+   • Cada usuário vê apenas seus pedidos
+
+───────────────────────────────────────────────────────────────────
+
+📁 ARQUIVOS IMPORTANTES:
+
+index.html
+├── Função: saveOrderToDatabase() → Salva pedido no Supabase
+├── Função: loadUserOrders() → Carrega pedidos do usuário
+└── Função: updateOrdersDisplay() → Exibe pedidos na interface
+
+SETUP_SUPABASE.md
+└── SQL para criar a tabela 'orders' no Supabase
+
+───────────────────────────────────────────────────────────────────
+
+🔧 ESTRUTURA DO PEDIDO SALVO:
+
+{
+  id: 1,
+  user_id: "uuid-do-usuario",
+  product_name: "Alexandre O Grande — Moletom",
+  size: "G",
+  price: 249.90,
+  quantity: 1,
+  order_date: "2026-01-20T15:30:00Z",
+  status: "Processando",
+  payment_method: "pix",
+  customer_name: "João Silva",
+  customer_email: "joao@email.com"
+}
+
+───────────────────────────────────────────────────────────────────
+
+📊 FLUXO COMPLETO:
+
+1. Usuário faz login ✓
+2. Adiciona produto ao carrinho ✓
+3. Vai ao checkout ✓
+4. Preenche dados ✓
+5. Clica "Confirmar Pedido" ✓
+   ↓
+   saveOrderToDatabase() é chamada
+   ↓
+6. Dados são salvos no Supabase ✓
+7. Carrinho é limpo ✓
+8. Pedidos são recarregados ✓
+9. Usuário vê o novo pedido em "Meus Pedidos" ✓
+
+───────────────────────────────────────────────────────────────────
+
+🐛 DEBUGGING (Abra o Console - F12):
+
+Procure por estas mensagens:
+
+✅ "Pedidos carregados: 1" 
+   → Sistema funcionando corretamente
+
+💾 "Salvando pedido no Supabase..."
+   → Pedido está sendo salvo
+
+✅ "Pedido salvo com sucesso!"
+   → Pedido foi salvo no banco
+
+⚠️  "Nenhum pedido encontrado"
+   → Tabela precisa ser criada no Supabase
+
+❌ "Erro ao buscar pedidos"
+   → Problema de permissões RLS
+
+───────────────────────────────────────────────────────────────────
+
+🆚 DIFERENÇAS:
+
+ANTES (Simulado):
+❌ Dados hardcoded
+❌ Sempre 3 pedidos iguais
+❌ Não salvava nada
+
+AGORA (Real):
+✅ Dados salvos no Supabase
+✅ Apenas pedidos que o usuário fez
+✅ Atualiza em tempo real
+✅ Cada usuário vê só seus pedidos
+
+───────────────────────────────────────────────────────────────────
+
+📞 CHECKLIST:
+
+□ Criar tabela 'orders' no Supabase
+□ Testar login
+□ Fazer uma compra teste
+□ Verificar se pedido aparece em "Meus Pedidos"
+□ Testar com outro usuário (deve ver pedidos diferentes)
+□ Verificar console do navegador (F12) para logs
+
+═══════════════════════════════════════════════════════════════════

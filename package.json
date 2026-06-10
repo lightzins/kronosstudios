@@ -1,0 +1,22 @@
+{
+  "name": "kronos-store",
+  "version": "1.0.0",
+  "description": "E-commerce essencial de vestuário premium - Kronos Drop 01",
+  "private": true,
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build needed'",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "ecommerce",
+    "fashion",
+    "streetwear",
+    "kronos"
+  ],
+  "author": "Kronos",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  }
+}
